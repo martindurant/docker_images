@@ -14,9 +14,7 @@ EXPOSE 50070
 EXPOSE 8020
 
 ENV PATH $HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
-RUN hdfs namenode -format && \
-  hdfs dfs -mkdir /user && \
-  hdfs dfs -mkdir /user/root
+RUN hdfs namenode -format
 # make non-privilaged user?
 
 ENTRYPOINT ["run.sh"]
