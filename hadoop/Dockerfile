@@ -9,7 +9,7 @@ RUN wget -q http://apache.mirror.rafal.ca/hadoop/common/hadoop-$HADOOP_VERSION/h
  service ssh start
 
 ADD *.xml $HADOOP_HOME/etc/hadoop/
-ADD run.sh .
+ADD run.sh /opt/hadoop/run.sh
 
 EXPOSE 50070 8020
 
@@ -17,4 +17,4 @@ ENV PATH $HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 RUN hdfs namenode -format
 # make non-privilaged user?
 
-ENTRYPOINT ["run.sh"]
+ENTRYPOINT ["bash", "/opt/hadoop/run.sh"]
