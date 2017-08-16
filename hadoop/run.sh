@@ -1,7 +1,8 @@
 service ssh restart
 ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
 cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
-echo 'NoHostAuthenticationForLocalhost yes' > ~/.ssh/config
+ssh-keyscan -H localhost >> ~/.ssh/known_hosts
+ssh-keyscan -H 0.0.0.0 >> ~/.ssh/known_hosts
 echo 'export JAVA_HOME='$JAVA_HOME | cat - /opt/hadoop/etc/hadoop/hadoop-env.sh > temp
 rm /opt/hadoop/etc/hadoop/hadoop-env.sh 
 mv temp /opt/hadoop/etc/hadoop/hadoop-env.sh
