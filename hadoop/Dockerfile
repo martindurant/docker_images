@@ -1,4 +1,4 @@
-FROM mdurant/docker_images:dev
+FROM mdurant/dev
 
 ENV HADOOP_VERSION 2.8.1
 ENV HADOOP_HOME /opt/hadoop
