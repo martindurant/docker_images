@@ -13,6 +13,9 @@ RUN conda install -y -q ipython pytest openjdk maven conda-build anaconda-client
 
 EXPOSE 22
 
-# ENV TINI_VERSION v0.9.0
-# ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
-# ENTRYPOINT ["/usr/bin/tini", "--"]
+ENV TINI_VERSION v0.15.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+ENTRYPOINT ["/tini", "--"]
+
+CMD ["bash"]

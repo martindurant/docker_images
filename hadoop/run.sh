@@ -1,3 +1,7 @@
+#!/bin/bash
+
+trap "echo exit;exit 0" SIGINT
+
 service ssh restart
 ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
 cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
@@ -12,4 +16,7 @@ start-yarn.sh
 hdfs dfs -mkdir /tmp
 hdfs dfs -chmod 777 /tmp
 
-sleep infinity
+while :
+do
+    sleep 1
+done
