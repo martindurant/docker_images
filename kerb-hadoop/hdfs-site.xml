@@ -44,6 +44,10 @@
         <value>HTTPS_ONLY</value>
     </property>
     <property>
+        <name>dfs.https.server.keystore.resource</name>
+        <value>ssl-server.xml</value>
+    </property>
+    <property>
         <name>dfs.web.authentication.kerberos.principal</name>
         <value>hdfs/kerb@CONTINUUM</value>
     </property>

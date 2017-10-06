@@ -1,13 +1,14 @@
 FROM mdurant/hadoop
 
 # input from https://github.com/tillt/docker-kdc
-ADD *.xml $HADOOP_HOME/etc/hadoop/
-ADD run.sh /opt/hadoop/run.sh
 ARG DEBIAN_FRONTEND=noninteractive
 ADD debconf debconf
 
-RUN apt-get update && debconf-set-selections debconf && apt-get install krb5-admin-server -y && apt-get install krb5-kdc -y
+RUN apt-get update && debconf-set-selections debconf && apt-get install krb5-admin-server expect -y && apt-get install krb5-kdc -y
 
+ADD *.xml $HADOOP_HOME/etc/hadoop/
+ADD run.sh /opt/hadoop/run.sh
+ADD keygen/* /root/keygen/
 EXPOSE	88
 
 # Create keytab folder.
